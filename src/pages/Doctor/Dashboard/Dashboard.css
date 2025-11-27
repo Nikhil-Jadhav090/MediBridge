@@ -1,0 +1,98 @@
+.doctor-dashboard {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.emergency-banner {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background: rgba(255, 0, 92, 0.1);
+  border: 2px solid var(--neon-red);
+  border-radius: 12px;
+  animation: neonPulseRed 2s infinite;
+}
+
+.banner-icon {
+  font-size: 32px;
+  color: var(--neon-red);
+}
+
+.banner-text {
+  color: var(--neon-red);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.appointment-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(10, 15, 31, 0.5);
+  border-left: 4px solid var(--neon-blue);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.appointment-item:hover {
+  background: rgba(0, 234, 255, 0.05);
+  transform: translateX(5px);
+}
+
+.appointment-time {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  min-width: 100px;
+}
+
+.appointment-details {
+  flex: 1;
+}
+
+.patient-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.appointment-type {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.appointment-status {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-completed {
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
+}
+
+.status-in-progress {
+  background: rgba(255, 221, 0, 0.2);
+  color: var(--neon-yellow);
+  border: 1px solid var(--neon-yellow);
+}
+
+.status-pending {
+  background: rgba(0, 234, 255, 0.2);
+  color: var(--neon-cyan);
+  border: 1px solid var(--neon-cyan);
+}

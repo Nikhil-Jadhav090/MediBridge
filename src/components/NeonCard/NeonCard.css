@@ -1,0 +1,134 @@
+.neon-card {
+  position: relative;
+  background: white;
+  border: 2px solid #e0f2fe;
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1);
+}
+
+.neon-card:hover {
+  border-color: #06b6d4;
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.2);
+  transform: translateY(-3px);
+}
+
+.neon-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.neon-card-icon {
+  font-size: 28px;
+  color: var(--primary-cyan);
+}
+
+.neon-card-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.neon-card-content {
+  position: relative;
+  z-index: 2;
+  color: var(--text-primary);
+}
+
+.neon-card-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, 
+    rgba(6, 182, 212, 0.05) 0%, 
+    transparent 50%, 
+    rgba(6, 182, 212, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.neon-card:hover .neon-card-border {
+  opacity: 1;
+}
+
+/* Color Variants */
+.neon-card-blue {
+  border-color: #bfdbfe;
+}
+
+.neon-card-blue:hover {
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+}
+
+.neon-card-blue .neon-card-icon {
+  color: var(--info-blue);
+}
+
+.neon-card-red {
+  border-color: #fecaca;
+}
+
+.neon-card-red:hover {
+  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
+
+.neon-card-red .neon-card-icon {
+  color: var(--danger-red);
+}
+
+.neon-card-green {
+  border-color: #a7f3d0;
+}
+
+.neon-card-green:hover {
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+}
+
+.neon-card-green .neon-card-icon {
+  color: var(--success-green);
+}
+
+.neon-card-yellow {
+  border-color: #fde68a;
+}
+
+.neon-card-yellow:hover {
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+}
+
+.neon-card-yellow .neon-card-icon {
+  color: var(--warning-orange);
+}
+
+.neon-card-purple {
+  border-color: #ddd6fe;
+}
+
+.neon-card-purple:hover {
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+  border-color: #8b5cf6;
+}
+
+.neon-card-purple .neon-card-icon {
+  color: var(--primary-purple);
+}

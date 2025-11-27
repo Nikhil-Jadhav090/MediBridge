@@ -1,0 +1,53 @@
+.system-settings {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.system-settings .neon-card {
+  margin-bottom: 30px;
+}
+
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.setting-item label {
+  color: var(--neon-cyan);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.setting-input {
+  padding: 12px;
+  background: rgba(10, 15, 31, 0.8);
+  border: 2px solid rgba(0, 234, 255, 0.3);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.setting-input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+}
+
+.backup-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.last-backup {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin: 0;
+}

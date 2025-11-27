@@ -1,0 +1,240 @@
+.doctor-management {
+  width: 100%;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.doctor-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.doctor-photo {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 234, 255, 0.1) 0%, rgba(20, 247, 255, 0.05) 100%);
+  padding: 30px;
+  text-align: center;
+  border-bottom: 2px solid rgba(0, 234, 255, 0.2);
+}
+
+.photo-circle {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px;
+  background: rgba(10, 15, 31, 0.8);
+  border: 3px solid var(--neon-cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
+  animation: float 3s infinite ease-in-out;
+}
+
+.availability-indicator {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(10, 15, 31, 0.8);
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: statusPulse 2s infinite;
+}
+
+.availability-indicator.available {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+}
+
+.availability-indicator.available .indicator-dot {
+  background: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.availability-indicator.on-leave {
+  border-color: var(--neon-yellow);
+  color: var(--neon-yellow);
+}
+
+.availability-indicator.on-leave .indicator-dot {
+  background: var(--neon-yellow);
+  box-shadow: 0 0 10px var(--neon-yellow);
+}
+
+.availability-indicator.in-surgery {
+  border-color: var(--neon-red);
+  color: var(--neon-red);
+}
+
+.availability-indicator.in-surgery .indicator-dot {
+  background: var(--neon-red);
+  box-shadow: 0 0 10px var(--neon-red);
+}
+
+.doctor-info {
+  padding: 25px;
+}
+
+.doctor-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px var(--neon-cyan);
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.doctor-specialization {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+}
+
+.doctor-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.detail-label {
+  color: var(--text-secondary);
+}
+
+.detail-value {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.patients-count {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.availability-status {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.availability-status .status-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge.available {
+  background: rgba(0, 255, 136, 0.2);
+  color: var(--neon-green);
+  border: 1px solid var(--neon-green);
+}
+
+.status-badge.on-leave {
+  background: rgba(255, 221, 0, 0.2);
+  color: var(--neon-yellow);
+  border: 1px solid var(--neon-yellow);
+}
+
+.status-badge.in-surgery {
+  background: rgba(255, 0, 92, 0.2);
+  color: var(--neon-red);
+  border: 1px solid var(--neon-red);
+}
+
+.doctor-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.doctor-actions .neon-btn {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Schedule Card */
+.schedule-card {
+  margin-top: 30px;
+}
+
+.schedule-grid {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.schedule-header,
+.schedule-row {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.schedule-day,
+.schedule-time {
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  background: rgba(0, 234, 255, 0.1);
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  border-radius: 8px;
+}
+
+.schedule-slot {
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.slot-available {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid var(--neon-green);
+  color: var(--neon-green);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.slot-booked {
+  background: rgba(255, 0, 92, 0.1);
+  border: 1px solid var(--neon-red);
+  color: var(--neon-red);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .doctors-grid {
+    grid-template-columns: 1fr;
+  }
+}
