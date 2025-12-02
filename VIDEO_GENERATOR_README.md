@@ -138,7 +138,6 @@ python generate_thunder_video.py \
 | `--device` | Device (cuda/cpu/auto) | `auto` |
 | `--model` | HuggingFace model ID | `cerspense/zeroscope_v2_576w` |
 | `--output-filename` | Custom filename | Auto-generated |
-| `--hd-upscale` | Enable HD upscaling | `False` |
 
 ## Output
 
@@ -275,7 +274,7 @@ The model is downloaded automatically from HuggingFace on first run and cached l
 ## Limitations
 
 - **Duration**: Model is optimized for short clips (4-12 seconds)
-- **Resolution**: Base model outputs 576x320 (can be upscaled)
+- **Resolution**: Base model outputs 576x320
 - **Style**: Works best with cinematic/realistic prompts
 - **Motion**: Better for atmospheric scenes than complex actions
 - **Text**: Cannot generate readable text in videos

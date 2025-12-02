@@ -196,8 +196,6 @@ class ThunderVideoGenerator:
         except Exception as e:
             logger.error(f"Error generating video: {e}")
             raise
-    
-
 
 
 def main():
