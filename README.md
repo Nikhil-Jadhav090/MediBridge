@@ -280,6 +280,33 @@ This project demonstrates:
 - Chart integration
 - Theming and styling
 
+## 🎬 AI Video Generation Tool
+
+MediBridge now includes a powerful **AI-powered cinematic video generator**! Create stunning 8-second videos of thunder and energy effects using state-of-the-art text-to-video AI models.
+
+### Features
+- 🌩️ Generate cinematic thunder and lightning videos
+- ⚡ AI-powered energy absorption effects
+- 🎥 Customizable resolution, duration, and style
+- 🚀 GPU-accelerated (CPU fallback available)
+
+### Quick Start
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Generate your first video
+python generate_thunder_video.py
+
+# See all options
+python generate_thunder_video.py --help
+```
+
+📖 **Full Documentation**: See [VIDEO_GENERATOR_README.md](VIDEO_GENERATOR_README.md) for detailed instructions, examples, and troubleshooting.
+
+---
+
 ## 📄 License
 
 This project is created for educational and demonstration purposes.
