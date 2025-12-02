@@ -8,7 +8,7 @@ and provides helpful diagnostics.
 """
 
 import sys
-import subprocess
+import os
 
 def check_python_version():
     """Check if Python version is 3.8+"""
@@ -56,7 +56,9 @@ def check_disk_space():
     print("\nChecking disk space...")
     try:
         import shutil
-        total, used, free = shutil.disk_usage("/")
+        # Use platform-agnostic home directory for disk space check
+        check_path = os.path.expanduser("~")
+        total, used, free = shutil.disk_usage(check_path)
         free_gb = free // (2**30)
         print(f"  ℹ Free space: {free_gb} GB")
         if free_gb < 15:

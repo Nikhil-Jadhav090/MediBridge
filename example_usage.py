@@ -9,16 +9,36 @@ Run each example separately by uncommenting the desired section.
 
 import os
 import sys
+import subprocess
 
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+
+def run_command(args):
+    """Safely run a command using subprocess."""
+    try:
+        result = subprocess.run(
+            args,
+            check=True,
+            text=True,
+            capture_output=False
+        )
+        return result.returncode == 0
+    except subprocess.CalledProcessError as e:
+        print(f"Error running command: {e}")
+        return False
+    except FileNotFoundError:
+        print("Error: Python or generate_thunder_video.py not found")
+        return False
+
 
 # Example 1: Basic usage with default settings
 def example_basic():
     """Generate a basic 8-second cinematic thunder video."""
     print("Example 1: Basic Thunder Video")
     print("-" * 50)
-    os.system("python generate_thunder_video.py")
+    run_command([sys.executable, "generate_thunder_video.py"])
 
 
 # Example 2: Quick low-resolution test
@@ -26,14 +46,14 @@ def example_quick_test():
     """Generate a quick low-res video for testing (faster)."""
     print("Example 2: Quick Test Video")
     print("-" * 50)
-    os.system("""
-        python generate_thunder_video.py \
-            --frames 24 \
-            --steps 15 \
-            --width 320 \
-            --height 176 \
-            --output-filename quick_test.mp4
-    """)
+    run_command([
+        sys.executable, "generate_thunder_video.py",
+        "--frames", "24",
+        "--steps", "15",
+        "--width", "320",
+        "--height", "176",
+        "--output-filename", "quick_test.mp4"
+    ])
 
 
 # Example 3: High quality production video
@@ -41,13 +61,13 @@ def example_high_quality():
     """Generate a high-quality cinematic video."""
     print("Example 3: High Quality Video")
     print("-" * 50)
-    os.system("""
-        python generate_thunder_video.py \
-            --frames 64 \
-            --steps 40 \
-            --guidance 11 \
-            --output-filename high_quality_thunder.mp4
-    """)
+    run_command([
+        sys.executable, "generate_thunder_video.py",
+        "--frames", "64",
+        "--steps", "40",
+        "--guidance", "11",
+        "--output-filename", "high_quality_thunder.mp4"
+    ])
 
 
 # Example 4: Custom superhero scene
@@ -64,13 +84,13 @@ def example_custom_prompt():
         "dramatic lighting, 4k quality"
     )
     
-    os.system(f"""
-        python generate_thunder_video.py \
-            --prompt "{custom_prompt}" \
-            --frames 64 \
-            --steps 30 \
-            --output-filename superhero_thunder.mp4
-    """)
+    run_command([
+        sys.executable, "generate_thunder_video.py",
+        "--prompt", custom_prompt,
+        "--frames", "64",
+        "--steps", "30",
+        "--output-filename", "superhero_thunder.mp4"
+    ])
 
 
 # Example 5: Dark fantasy theme
@@ -91,13 +111,13 @@ def example_dark_fantasy():
         "modern buildings, daylight"
     )
     
-    os.system(f"""
-        python generate_thunder_video.py \
-            --prompt "{fantasy_prompt}" \
-            --negative-prompt "{negative_prompt}" \
-            --frames 64 \
-            --output-filename dark_fantasy_thunder.mp4
-    """)
+    run_command([
+        sys.executable, "generate_thunder_video.py",
+        "--prompt", fantasy_prompt,
+        "--negative-prompt", negative_prompt,
+        "--frames", "64",
+        "--output-filename", "dark_fantasy_thunder.mp4"
+    ])
 
 
 # Example 6: CPU mode (no GPU required)
@@ -112,13 +132,13 @@ def example_cpu_mode():
         print("Skipped.")
         return
     
-    os.system("""
-        python generate_thunder_video.py \
-            --device cpu \
-            --frames 32 \
-            --steps 20 \
-            --output-filename cpu_thunder.mp4
-    """)
+    run_command([
+        sys.executable, "generate_thunder_video.py",
+        "--device", "cpu",
+        "--frames", "32",
+        "--steps", "20",
+        "--output-filename", "cpu_thunder.mp4"
+    ])
 
 
 def print_menu():

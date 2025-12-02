@@ -197,67 +197,7 @@ class ThunderVideoGenerator:
             logger.error(f"Error generating video: {e}")
             raise
     
-    def generate_hd_video(
-        self,
-        base_video_path,
-        upscale_model_id="cerspense/zeroscope_v2_XL",
-        num_inference_steps=20,
-        output_filename=None
-    ):
-        """
-        Upscale a base video to HD quality (1024x576).
-        
-        This is an optional second pass for higher quality output.
-        
-        Args:
-            base_video_path (str): Path to the base video to upscale
-            upscale_model_id (str): HuggingFace model for upscaling
-            num_inference_steps (int): Number of denoising steps
-            output_filename (str): Custom output filename
-            
-        Returns:
-            str: Path to the upscaled HD video
-        """
-        logger.info("Loading HD upscaling model...")
-        logger.info("Note: This requires significant GPU memory (>16GB VRAM recommended)")
-        
-        try:
-            # Load upscaling pipeline
-            upscale_pipe = DiffusionPipeline.from_pretrained(
-                upscale_model_id,
-                torch_dtype=torch.float16 if self.device == "cuda" else torch.float32
-            )
-            
-            if self.device == "cuda":
-                upscale_pipe.enable_model_cpu_offload()
-                upscale_pipe.enable_vae_slicing()
-            else:
-                upscale_pipe = upscale_pipe.to(self.device)
-            
-            # Load base video frames
-            from PIL import Image
-            import numpy as np
-            
-            logger.info(f"Loading base video: {base_video_path}")
-            # Note: In production, you'd load the actual video frames here
-            # This is a placeholder for the upscaling process
-            
-            logger.info("Upscaling to HD quality...")
-            # Upscaling logic would go here
-            
-            if output_filename is None:
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                output_filename = f"thunder_energy_hd_{timestamp}.mp4"
-            
-            output_path = self.output_dir / output_filename
-            
-            logger.info(f"✓ HD video saved to: {output_path}")
-            return str(output_path)
-            
-        except Exception as e:
-            logger.error(f"Error in HD upscaling: {e}")
-            logger.error("Skipping HD upscaling. Base video is still available.")
-            return base_video_path
+
 
 
 def main():
@@ -369,12 +309,6 @@ Examples:
         help='Custom output filename (auto-generated if not specified)'
     )
     
-    parser.add_argument(
-        '--hd-upscale',
-        action='store_true',
-        help='Enable HD upscaling (requires >16GB VRAM)'
-    )
-    
     args = parser.parse_args()
     
     # Print header
@@ -409,12 +343,6 @@ Examples:
             fps=args.fps,
             output_filename=args.output_filename
         )
-        
-        # Optional HD upscaling
-        if args.hd_upscale:
-            logger.info("\nStarting HD upscaling pass...")
-            hd_path = generator.generate_hd_video(video_path)
-            logger.info(f"Final HD video: {hd_path}")
         
         print()
         print("=" * 70)
